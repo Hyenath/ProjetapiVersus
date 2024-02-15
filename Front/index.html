@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Qui est le meilleur ?</title>
+    <script src="main.css"></script>
+</head>
+<body>
+  <form>
+    <label for="choix">Choisissez le premier personnage :</label>
+    <select id="choix" name="choix">
+      <!-- Ajoutez autant d'options que nécessaire -->
+    </select>
+    <label for="choix2">Choississez le deuxième personnage :</label>
+    <select id="choix2" name="choix">
+        <!-- Ajoutez autant d'options que nécessaire -->
+    </select>
+    <input type="submit" value="Valider" id="button1">
+  </form>
+</body>
+<script src='main.js'></script>
+<script>
+var button = document.getElementById('button1');
+
+// Cachez le bouton immédiatement lors du chargement de la page
+button.style.display = 'none';
+
+// Attendez 5 secondes avant d'afficher le bouton
+setTimeout(function() {
+    button.style.display = 'block';
+}, 5000); // 5000 millisecondes = 5 secondes
+</script>
+</html>
