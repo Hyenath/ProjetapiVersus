@@ -5,6 +5,11 @@ const app = express();
 const cors = require('cors');
 const port = 3000; // Le port sur lequel votre serveur écoutera
 const IPaddress = "0.0.0.0";
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+const User = require('./models/user');
+
+const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -82,6 +87,44 @@ app.post('/addUser', (req, res) => {
 
   
 });
+
+//Inscription
+mongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connecté à MongoDB'))
+    .catch(err => console.error('Impossible de se connecter à MongoDB', err));
+
+app.post("/s'enregistrer", async (req, res) => {
+    const { email, password } = req.body;
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+        return res.status(400).json({ message: "L'utilisateur existe déjà." });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ email, password: hashedPassword });
+    await newUser.save();
+
+    res.status(201).json({ message: "Succès de l'enregistrement utilisateur." });
+});
+
+//Se connecter
+app.post('/connexion', async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user) {
+      return res.status(401).json({ message: "L'utilisateur n'existe pas." });
+  }
+
+  const passwordMatch = await bcrypt.compare(password, user.password);
+  if (!passwordMatch) {
+      return res.status(401).json({ message: "Mot de passe incorrect." });
+  }
+
+  res.json({ message: "Connexion réussie." });
+});
+
 
 // Démarrer le serveur
 app.listen(port, IPaddress, () => {
