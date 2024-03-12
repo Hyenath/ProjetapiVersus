@@ -3,8 +3,31 @@
 <head>
     <meta charset='utf-8'>
     <title>qui est le meilleur ?</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <!--Rajout inscription, connexion-->
+    <div class="header">
+      <button id="loginBtn">Connexion</button>
+      <button id="registerBtn">Inscription</button>
+    </div>
+  
+    <form id="registerForm" class="hidden">
+      <h2>S'inscrire</h2>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Inscription</button>
+    </form>
+  
+    <form id="loginForm" class="hidden">
+      <h2>Se connecter</h2>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Connexion</button>
+    </form>
+    <!--fin du rajout-->
+
+
   <form>
     <label for="choix">Choisissez le premier personnage :</label>
     <select id="choix" name="choix">
@@ -16,6 +39,20 @@
     </select>
     <input type="submit" value="Valider" id="button1">
   </form>
+
+  <div id="carte1">
+    <h2 id="name1"></h2>
+    <h3>Force</h3>
+    <p id="force1"></p>
+  </div>
+
+  <div id="carte2">
+    <h2 id="name2"></h2>
+    <h3>Force</h3>
+    <p id="force2"></p>
+  </div>
+  </div>
+
 </body>
 <script src='main.js'></script>
 <script>

@@ -1,0 +1,16 @@
+/*connexion/inscription*/
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+#loginBtn,
+#registerBtn {
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}

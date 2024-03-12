@@ -1,43 +1,14 @@
-var button = document.getElementById('button1');
-button.addEventListener('click', function () {
-    let input1 = document.getElementById('Moninput1')
-    appelApi(input1.value);
+document.getElementById('button1').addEventListener('click', function (event) {
+    event.preventDefault(); // Empêche le formulaire de se soumettre
+
+    let select1Value = document.getElementById('choix').value;
+    let select2Value = document.getElementById('choix2').value;
+    afficherResultat(select1Value, select2Value);
 });
 
-function appelApi(lelLgin) {
-    const data = { nom: lelLgin};
-
-    const url = `http://192.168.64.194:3000/addUser`;
-
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erreur lors de la requête HTTP');
-            }
-            return response.json();
-        })
-        .then(responseData => {
-            // Vous pouvez traiter la réponse de l'API ici
-            if (responseData.success) {
-                console.log('Réponse de l\'API :', responseData);
-                var tableau = document.getElementById("personnage");
-
-
-            } else {
-                console.log('Réponse de l\'API :', "Insert Ko");
-            }
-
-        })
-        .catch(error => {
-            console.error('Erreur :', error);
-        });
+function afficherResultat(value1, value2) {
+    document.getElementById('name1').textContent = value1;
+    document.getElementById('name2').textContent = value2;
 }
 
 // URL de l'API que vous souhaitez interroger
@@ -71,3 +42,55 @@ fetch(apiUrl)
         // Gestion des erreurs ici
         console.error('Erreur:', error);
     });
+
+document.getElementById('registerBtn').addEventListener('click', function() {
+    document.getElementById('registerForm').classList.remove('hidden');
+});
+
+document.getElementById('loginBtn').addEventListener('click', function() {
+    document.getElementById('loginForm').classList.remove('hidden');
+});
+
+document.getElementById('registerForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const email = formData.get('email');
+    const password = formData.get('password');
+
+    try {
+        const response = await fetch('http://192.168.64.194:3000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        alert(data.message);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const email = formData.get('email');
+    const password = formData.get('password');
+
+    try {
+        const response = await fetch('http://192.168.64.194:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        alert(data.message);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
