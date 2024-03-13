@@ -23,11 +23,12 @@ const connection = mysql.createConnection({
   host: '192.168.64.243',
   user: 'Baseprinc',
   password: 'Baseeehehe',
-  database: 'personnage',
+  database: 'Api',
 });
 
 // Promisify query method to use async/await
 const query = util.promisify(connection.query).bind(connection);
+
 
 // Connexion à la base de données MySQL
 connection.connect((err) => {
