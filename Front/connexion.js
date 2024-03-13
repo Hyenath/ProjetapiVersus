@@ -44,7 +44,10 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             body: JSON.stringify({ email, password })
         });
         const data = await response.json();
-        alert(data.message);
+        console.log(data.message);
+        console.log(data.token);
+        localStorage.setItem('token', data.token); // Utilisez data.token pour stocker le token
+
     } catch (error) {
         console.error('Error:', error);
     }
