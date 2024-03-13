@@ -6,6 +6,25 @@
     padding: 10px;
 }
 
+body{
+    color: #FFFFFF;
+    
+}
+
+#container{
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("Images/versus-screen-vs-battle-background-vector.jpg");
+    background-size: cover; /* Ajuster la taille de l'image pour remplir complètement la fenêtre du navigateur */
+    background-position: center; /* Positionner l'image au centre */
+    background-repeat: no-repeat; /* Empêcher la répétition de l'image */
+}
+
+
 #loginBtn,
 #registerBtn {
     margin-left: 10px;
