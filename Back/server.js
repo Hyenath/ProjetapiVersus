@@ -57,6 +57,18 @@ app.get('/', async (req, res) => {
   }
 });
 
+// Route d'exemple Accessoire
+app.get('/', async (req, res) => {
+  try {
+    const results = await query('SELECT * FROM Accessoires');
+    res.json(results);
+  } catch (err) {
+    console.error('Erreur lors de l\'exécution de la requête MySQL:', err);
+    res.status(500).send('Erreur lors de la requête SQL');
+  }
+});
+
+
 // Inscription
 app.post("/register", async (req, res) => {
   console.log("execution du register")
