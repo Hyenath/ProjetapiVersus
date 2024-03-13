@@ -14,7 +14,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const password = formData.get('password');
 
     try {
-        const response = await fetch('http://192.168.64.194:3000/register', {
+        const response = await fetch('http://192.168.64.243:3000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     const password = formData.get('password');
 
     try {
-        const response = await fetch('http://192.168.64.194:3000/login', {
+        const response = await fetch('http://192.168.64.243:3000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
