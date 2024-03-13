@@ -11,6 +11,10 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f1f1f1;
+    background-image: url("Images/287004.jpg");
+    background-size: cover; /* Ajuster la taille de l'image pour remplir complètement la fenêtre du navigateur */
+    background-position: center; /* Positionner l'image au centre */
+    background-repeat: no-repeat; /* Empêcher la répétition de l'image */
 }
 
 .container {
@@ -71,4 +75,12 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+#panneaubienvenue{
+
+}
+
+#panneaurevue{
+
 }
