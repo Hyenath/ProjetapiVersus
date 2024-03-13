@@ -4,6 +4,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const util = require('util');
+const jwt = require('jsonwebtoken'); // Ajout du module jsonwebtoken
 
 const app = express();
 const port = 3000; // Le port sur lequel votre serveur écoutera
@@ -29,15 +30,21 @@ const connection = mysql.createConnection({
 // Promisify query method to use async/await
 const query = util.promisify(connection.query).bind(connection);
 
-
-// Connexion à la base de données MySQL
-connection.connect((err) => {
-  if (err) {
-    console.error('Erreur de connexion à la base de données MySQL:', err);
-    process.exit(1); // Quitte l'application en cas d'erreur de connexion
+// Middleware pour vérifier l'authentification
+function verifyToken(req, res, next) {
+  const token = req.headers['authorization'];
+  if (!token) {
+    return res.status(401).json({ message: 'Token non fourni' });
   }
-  console.log('Connecté à la base de données MySQL');
-});
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: 'Token invalide' });
+    }
+    req.user = decoded;
+    next();
+  });
+}
 
 // Route d'exemple
 app.get('/', async (req, res) => {
@@ -79,14 +86,25 @@ app.post('/login', async (req, res) => {
     }
     const user = users[0];
     const passwordMatch = await bcrypt.compare(password, user.password);
+    console.log("décryptage du MDP")
     if (!passwordMatch) {
       return res.status(401).json({ message: "Mot de passe incorrect." });
     }
-    res.json({ message: "Connexion réussie." });
+    // Si les informations d'identification sont correctes, générez un token JWT
+    const token = jwt.sign({ email: user.email }, 'your_secret_key', { expiresIn: '1h' });
+    console.log("token généré")
+    // Renvoyer le token JWT dans la réponse
+    res.json({ token });
+    console.log("réponse du token")
   } catch (error) {
     console.error("Erreur lors de la connexion:", error);
     res.status(500).json({ message: "Erreur lors de la connexion." });
   }
+});
+
+// Route protégée nécessitant une authentification
+app.get('/protectedRoute', verifyToken, (req, res) => {
+  res.json({ message: 'Vous avez accès à cette ressource' });
 });
 
 // Démarrer le serveur
