@@ -56,6 +56,7 @@ function afficherResultat(value1, value2) {
     document.getElementById('name2').textContent = value2;
 }
 
+//à vérifier
 function afficherSpécific(value1, value2){
     document.getElementById('spécific1').textContent = value1;
 }
