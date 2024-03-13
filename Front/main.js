@@ -11,8 +11,12 @@ function afficherResultat(value1, value2) {
     document.getElementById('name2').textContent = value2;
 }
 
+function afficherSpécific(value1, value2){
+    document.getElementById('spécific1').textContent = value1;
+}
+
 // URL de l'API que vous souhaitez interroger
-const apiUrl = `http://192.168.64.243:3000`;
+const apiUrl = 'http://192.168.64.243:3000';
 
 // Utilisation de fetch() pour effectuer une requête GET
 fetch(apiUrl)
@@ -94,3 +98,4 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         console.error('Error:', error);
     }
 });
+
