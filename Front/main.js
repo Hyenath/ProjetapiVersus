@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', fetchDataIfLoggedIn);
 // Fonction pour récupérer les données de l'API
 async function fetchData() {
     try {
-        const apiUrl = `http://192.168.64.194:3000`;
+        const apiUrl = `http://192.168.64.243:3000`;
         const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error('La requête a échoué');
@@ -31,8 +31,18 @@ async function fetchData() {
             let option2 = document.createElement("option");
             option.value = item.nom;
             option.text = item.nom;
+            option.setAttribute('forcex', item.force); // Ajouter un attribut forcex à l'option
+            option.setAttribute('vitessex', item.vitesse);
+            option.setAttribute('defensex', item.defense);
+            option.setAttribute('durabilitex', item.durabilité);
+            option.setAttribute('intelligencex', item.intelligence);
             option2.value = item.nom;
             option2.text = item.nom;
+            option2.setAttribute('forcex2', item.force);  // Ajouter un attribut forcex2 à l'option
+            option2.setAttribute('vitessex2', item.vitesse);
+            option2.setAttribute('defensex2', item.defense);
+            option2.setAttribute('durabilitex2', item.durabilité);
+            option2.setAttribute('intelligencex2', item.intelligence);
             select.appendChild(option);
             select2.appendChild(option2);
         });
@@ -46,17 +56,37 @@ async function fetchData() {
 document.getElementById('button1').addEventListener('click', function (event) {
     event.preventDefault(); // Empêche le formulaire de se soumettre
 
+    document.getElementById('carte1').classList.remove('hidden');
+    document.getElementById('carte2').classList.remove('hidden');
+
     let select1Value = document.getElementById('choix').value;
     let select2Value = document.getElementById('choix2').value;
-    afficherResultat(select1Value, select2Value);
+    let select3Value = document.getElementById('choix').options[document.getElementById('choix').selectedIndex].getAttribute('forcex');
+    let select4Value = document.getElementById('choix2').options[document.getElementById('choix2').selectedIndex].getAttribute('forcex2');
+    let select5Value = document.getElementById('choix').options[document.getElementById('choix').selectedIndex].getAttribute('vitessex');
+    let select6Value = document.getElementById('choix2').options[document.getElementById('choix2').selectedIndex].getAttribute('vitessex2');
+    let select7Value = document.getElementById('choix').options[document.getElementById('choix').selectedIndex].getAttribute('defensex');
+    let select8Value = document.getElementById('choix2').options[document.getElementById('choix2').selectedIndex].getAttribute('defensex2');
+    let select9Value = document.getElementById('choix').options[document.getElementById('choix').selectedIndex].getAttribute('durabilitex');
+    let select10Value = document.getElementById('choix2').options[document.getElementById('choix2').selectedIndex].getAttribute('durabilitex2');
+    let select11Value = document.getElementById('choix').options[document.getElementById('choix').selectedIndex].getAttribute('intelligencex');
+    let select12Value = document.getElementById('choix2').options[document.getElementById('choix2').selectedIndex].getAttribute('intelligencex2');
+    afficherResultat(select1Value, select2Value, select3Value, select4Value, select5Value, select6Value, select7Value, select8Value, select9Value, select10Value, select11Value, select12Value);
 });
 
-function afficherResultat(value1, value2) {
+function afficherResultat(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12) {
     document.getElementById('name1').textContent = value1;
     document.getElementById('name2').textContent = value2;
-}
-
-//à vérifier
-function afficherSpécific(value1, value2){
-    document.getElementById('spécific1').textContent = value1;
+    document.getElementById('force1').textContent = value3;
+    document.getElementById('force2').textContent = value4;
+    document.getElementById('vitesse1').textContent = value5;
+    document.getElementById('vitesse2').textContent = value6;
+    document.getElementById('defense1').textContent = value7;
+    document.getElementById('defense2').textContent = value8;
+    document.getElementById('durabilite1').textContent = value9;
+    document.getElementById('durabilite2').textContent = value10;
+    document.getElementById('intelligence1').textContent = value11;
+    document.getElementById('intelligence2').textContent = value12;
+    
+// Appeler la fonction pour récupérer les données des personnages à chaque fois que le bouton est cliqué
 }
