@@ -10,7 +10,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f1f1f1;
     background-image: url("Images/287004.jpg");
     background-size: cover; /* Ajuster la taille de l'image pour remplir complètement la fenêtre du navigateur */
     background-position: center; /* Positionner l'image au centre */
@@ -19,11 +18,12 @@ body {
 
 .container {
     max-width: 400px;
+    text-align: center;
     width: 100%;
     padding: 40px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 1);
 }
 
 h2 {
@@ -36,9 +36,6 @@ form {
     flex-direction: column;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
 button {
     margin-bottom: 20px;
     padding: 10px;
@@ -48,13 +45,14 @@ button {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #2373b5;
     color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #458cd8;
 }
 
 .sign-up-link,
@@ -77,10 +75,76 @@ button:hover {
     display: none;
 }
 
-#panneaubienvenue{
+#panneaubienvenue {
+    background-color: #f5f5f5;
+    background-color: rgba(0, 0, 0, 0.1); /* Couleur de fond */
+    color: #333; /* Couleur du texte */
+    padding: 10px; /* Espacement interne */
+    border-radius: 20px; /* Coins arrondis */
+  }
+  
+  #panneaurevue {
+    background-color: #f5f5f5;
+    background-color: rgba(0, 0, 0, 0.1); /* Couleur de fond */
+    color: #333; /* Couleur du texte */
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Espacement interne */
+    border-radius: 20px; /* Coins arrondis */
+  }
 
+/* Stylisation des champs de saisie */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-#panneaurevue{
+/* Animation sur le bouton */
+button[type="submit"] {
+  background-color: lightblue; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte */
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Animation de transition */
+}
 
+/* Changement de couleur au survol du bouton */
+button[type="submit"]:hover {
+  background-color: skyblue;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Garantit que la largeur inclut le padding et la bordure */
+    font-size: 16px;
+    color: #333; /* Couleur du texte */
+    background-color: #f5f5f5; /* Couleur de fond */
+}
+
+input[type="email"],
+input[type="password"] {
+    /* Vos styles existants */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Ajout de la transition */
+}
+
+input[type="email"]:hover,
+input[type="email"]:focus,
+input[type="password"]:hover,
+input[type="password"]:focus {
+    background-color: rgba(245, 245, 245, 1); /* Changement de couleur de fond au survol ou focus */
+    border-color: #999; /* Changement de couleur de bordure au survol ou focus */
 }
