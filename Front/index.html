@@ -25,14 +25,17 @@
       <select id="choix2" name="choix">
         <!-- Ajoutez autant d'options que nécessaire -->
       </select>
-      <label for="choixA1">Choisissez un accessoire: </label>
-      <select id="choixA1" name="choixA"></select>
+      <label for="choixA2">Choisissez un accessoire: </label>
+      <select id="choixA2" name="choixA"></select>
       <input type="submit" value="Valider" id="button1">
     </form>
   </div>
 
-  <div style="text-align: center; width: 50%; margin-left: 25%;">
-    <div id="carte1" class="hidden" style="text-align: left;">
+  <div style="text-align: center;">
+
+    <div><img id="image1" class ="hidden" src="" alt="Image"/></div>
+
+    <div id="carte1" class="hidden" style="text-align: left; margin-top: 12%; margin-left: 26.5%">
       <h2 id="name1"></h2>
       <h3 id="spécific1">Force</h3>
       <p id="force1"></p>
@@ -44,9 +47,19 @@
       <p id="durabilite1"></p>
       <h3 id="spécific2">Intelligence</h3>
       <p id="intelligence1"></p>
+
+      <br>
+
+      <h2 id="nameA1"></h2>
+      <h3>Bonus</h3>
+      <p id="bonus1"></p>
+      <h3>Malus</h3>
+      <p id="malus1"></p>
+      <h3>Effets</h3>
+      <p id="effects1"></p>
     </div>
 
-    <div id="carte2" class="hidden" style="text-align: right;">
+    <div id="carte2" class="hidden" style="text-align: right; margin-top: -22.5%; margin-right: 28%">
       <h2 id="name2"></h2>
       <h3 id="spécific2">Force</h3>
       <p id="force2"></p>
@@ -58,7 +71,20 @@
       <p id="durabilite2"></p>
       <h3 id="spécific2">Intelligence</h3>
       <p id="intelligence2"></p>
+      
+      <br>
+
+      <h2 id="nameA2"></h2>
+      <h3>Bonus</h3>
+      <p id="bonus2"></p>
+      <h3>Malus</h3>
+      <p id="malus2"></p>
+      <h3>Effets</h3>
+      <p id="effects2"></p>
     </div>
+
+    <div><img id="image2" class="hidden" src="" alt="Image"/></div>
+
   </div>
 </body>
 <script src='main.js'></script>
