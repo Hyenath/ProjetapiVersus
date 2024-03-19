@@ -49,18 +49,7 @@ function verifyToken(req, res, next) {
 // Route d'exemple
 app.get('/', async (req, res) => {
   try {
-    const results = await query('SELECT * FROM perso');
-    res.json(results);
-  } catch (err) {
-    console.error('Erreur lors de l\'exécution de la requête MySQL:', err);
-    res.status(500).send('Erreur lors de la requête SQL');
-  }
-});
-
-// Route d'exemple Accessoire
-app.get('/', async (req, res) => {
-  try {
-    const results = await query('SELECT * FROM Accessoires');
+    const results = await query('SELECT * FROM perso, Accessoires');
     res.json(results);
   } catch (err) {
     console.error('Erreur lors de l\'exécution de la requête MySQL:', err);
