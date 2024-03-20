@@ -54,17 +54,26 @@ body{
 
 #image1{
     float: left;
-    margin-top: -10%;
+    margin-top: -8.5%;
     margin-left: 0;
     border-radius: 10%;
     height: 800px;
-
+    max-width: 100%;
 }
 
 #image2{
-    float: left;
-    margin-top: -10%;
+    float: right;
+    margin-top: -40.1%;
     margin-left: 0;
     border-radius: 10%;
     height: 800px;
+    max-width: 100%;
+}
+
+.gradient-button{
+    background: linear-gradient(to left, #000060, #850606);
+    color: #FFFFFF;
+    border-color: linear-gradient(to right, #000060, #850606);
+    border-radius: 7%;
+
 }

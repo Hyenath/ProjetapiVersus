@@ -59,7 +59,7 @@ app.get('/', async (req, res) => {
 
 
 // Inscription
-app.post("/register", async (req, res) => {
+app.post("/register", verifyToken, async (req, res) => {
   console.log("execution du register")
   const { email, password } = req.body;
   try {
