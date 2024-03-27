@@ -50,9 +50,7 @@ function verifyToken(req, res, next) {
 app.get('/', async (req, res) => {
   try {
     const results = await query(`
-    SELECT nom, forcetest, vitesse, defense, durabilité, intelligence FROM perso
-    UNION 
-    SELECT nomA, Bonus, Malus, Effects, '', '' FROM Accessoires
+    SELECT * FROM perso
     `);
 
     res.json(results);
@@ -62,6 +60,18 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.get('/Accessoires', async (req, res) => {
+  try {
+    const results = await query(`
+    SELECT * FROM Accessoires
+    `);
+
+    res.json(results);
+  } catch (err) {
+    console.error('Erreur lors de l\'exécution de la requête MySQL:', err);
+    res.status(500).send('Erreur lors de la requête SQL');
+  }
+});
 
 // Inscription 
 app.post("/register", async (req, res) => {
