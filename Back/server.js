@@ -49,7 +49,12 @@ function verifyToken(req, res, next) {
 // Route d'exemple
 app.get('/', async (req, res) => {
   try {
-    const results = await query('SELECT * FROM perso, Accessoires');
+    const results = await query(`
+    SELECT nom, forcetest, vitesse, defense, durabilité, intelligence FROM perso
+    UNION 
+    SELECT nomA, Bonus, Malus, Effects, '', '' FROM Accessoires
+    `);
+
     res.json(results);
   } catch (err) {
     console.error('Erreur lors de l\'exécution de la requête MySQL:', err);
@@ -58,7 +63,7 @@ app.get('/', async (req, res) => {
 });
 
 
-// Inscription
+// Inscription 
 app.post("/register", verifyToken, async (req, res) => {
   console.log("execution du register")
   const { email, password } = req.body;
