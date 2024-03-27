@@ -126,16 +126,24 @@ function afficherResultat(value1, value2, value3, value4, value5, value6, value7
 
     let image1 = document.getElementById('image1');
     let image2 = document.getElementById('image2');
-    console.log(value1, value2, valueA1, valueA2);
-    if (value1 === "batman") {
+    console.log(value1, value2);
+    if (value1 === "Doom Slayer") {
+        image1.src = "Images/doomguy-doom-2880x1800-12603.jpg";
+    } else if (value1 === "J2") {
+        image1.src = "chemin/vers/image1.jpg";
+    } else if (value1 === "Batman") {
         image1.src = "Images/batman-wallpapers-574x1024.jpg";
-    } else if (value1 === "choix2") {
-        image1.src = "chemin/vers/image2.jpg";
+    } else if (value1 === "Superman") {
+        image1.src = "Images/Superman_50.jpg";
     }
 
-    if (value2 === "batman") {
-        image2.src = "Images/batman-wallpapers-574x1024.jpg";
-    } else if (value2 === "choix2") {
+    if (value2 === "Doom Slayer") {
+        image2.src = "Images/doomguy-doom-2880x1800-12603.jpg";
+    } else if (value2 === "J2") {
         image2.src = "chemin/vers/image2.jpg";
+    } else if (value2 === "Batman") {
+        image2.src = "Images/batman-wallpapers-574x1024.jpg";
+    } else if (value2 === "Superman") {
+        image2.src = "Images/Superman_50.jpg";
     }
 }
