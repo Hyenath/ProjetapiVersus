@@ -45,7 +45,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
-
     const formData = new FormData(this);
     const email = formData.get('email');
     const password = formData.get('password');
