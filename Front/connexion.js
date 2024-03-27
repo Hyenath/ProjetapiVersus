@@ -4,15 +4,15 @@ document.getElementById('panneaurevue').classList.remove('hidden');
 document.getElementById('registerBtn').addEventListener('click', function() {
     document.getElementById('registerForm').classList.remove('hidden');
     document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('panneaubienvenue').classList.remove('hidden');
-    document.getElementById('panneaurevue').classList.add('hidden');
+    document.getElementById('panneaubienvenue').classList.add('hidden');
+    document.getElementById('panneaurevue').classList.remove('hidden');
 });
 
 document.getElementById('loginBtn').addEventListener('click', function() {
     document.getElementById('loginForm').classList.remove('hidden');
     document.getElementById('registerForm').classList.add('hidden');
-    document.getElementById('panneaurevue').classList.remove('hidden');
-    document.getElementById('panneaubienvenue').classList.add('hidden');
+    document.getElementById('panneaurevue').classList.add('hidden');
+    document.getElementById('panneaubienvenue').classList.remove('hidden');
 });
 
 document.getElementById('registerForm').addEventListener('submit', async function(event) {
